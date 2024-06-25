@@ -1,42 +1,74 @@
 
 
- <header>
-        <!-- Header Start -->
-        <div class="header-area header-transparent">
-            <div class="main-header header-sticky">
-                <div class="container-fluid">
-                    <div class="menu-wrapper d-flex align-items-center justify-content-between">
-                        <!-- Logo -->
-                        <div class="logo">
-                            <a href="index.jsp"><img src="assets/img/logo/logo1.png" alt=""></a>
-                        </div>
-                        <!-- Main-menu -->
-                        <div class="main-menu f-right d-none d-lg-block">
-                            <nav>
-                                <ul id="navigation">
-                                    <li><a href="index.jsp">Home</a></li>
-                                    <li><a href="about.jsp">About</a></li>
-<!--                                    <li><a href="#">Courses</a></li>-->
-                                    <li><a href="pricing.jsp">Pricing</a></li>
-                                    <li><a href="#">Shop</a></li>
-                                    <li><a href="blog.jsp">Blog</a>
-                                        <ul class="submenu">
-                                            <li><a href="blog.jsp">Blog</a></li>
-                                            <li><a href="blog_details.jsp">Blog Details</a></li>
-<!--                                            <li><a href="#">Elements</a></li>-->
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.jsp">Contact</a></li>
-                                </ul>
-                            </nav>
-                        </div>          
-                        <!-- Header-btn -->
-                        <div class="header-btns d-none d-lg-block f-right">
-                           <a href="register.jsp" class="btn">Register</a>
-                           <a href="login.jsp" class="btn">Log in</a>
-                       </div>
-                       <!-- Mobile Menu -->
-                       <div class="col-12">
+<header>
+    <!-- Header Start -->
+    <div class="header-area header-transparent">
+        <div class="main-header header-sticky">
+            <div class="container-fluid">
+                <div class="menu-wrapper d-flex align-items-center justify-content-between">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <a href="index.jsp"><img src="assets/img/logo/logo1.png" alt=""></a>
+                    </div>
+                    <!-- Main-menu -->
+                    <div class="main-menu f-right d-none d-lg-block">
+                        <nav>
+                            <ul id="navigation">
+                                <li><a href="index.jsp">Home</a></li>
+                                <li><a href="about.jsp">About</a></li>
+                                <!--    <li><a href="#">Courses</a></li>-->
+                                <li><a href="pricing.jsp">Pricing</a></li>
+                                <li><a href="#">Shop</a></li>
+                                <li><a href="blog.jsp">Blog</a>
+                                    <ul class="submenu">
+                                        <li><a href="blog.jsp">Blog</a></li>
+                                        <li><a href="blog_details.jsp">Blog Details</a></li>
+                                        <!--    <li><a href="#">Elements</a></li>-->
+                                    </ul>
+                                </li>
+                                <li><a href="contact.jsp">Contact</a></li>
+                            </ul>
+                        </nav>
+                    </div>       
+
+                    <%
+                        String role = (String) session.getAttribute("name");
+
+                        if (role != null && (role.equals("user")|| role.equals("admin"))) {%>
+
+
+                    <div class="main-menu f-right d-none d-lg-block">
+                        <nav>
+                            <ul id="navigations">
+                                <li><a class="mess" href="#" >  </a></li>
+                                <li><a class="cate" href="#" >  </a></li>
+                                <li> <a class="users" href="#" ></a>
+                                    <ul class="submenu">
+                                        <%if (role != null &&  role.equals("admin")) {%>
+                                        <li><a href="profile.jsp?type=edit">Manager user</a></li>
+                                        <li><a href="profile.jsp?type=changePass">Chart</a></li>
+                                        <%}%>
+                                        <li><a href="profile.jsp?type=edit">Edit Profile</a></li>
+                                        <li><a href="profile.jsp?type=changePass">Change passworld</a></li>
+                                        <li><a href="<%=request.getContextPath()%>/LoginControler">Logout</a></li>
+
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <%}%>
+
+                    <% if (role == null) {%>
+                    <div class="header-btns d-none d-lg-block f-right">
+                        <a href="register.jsp" class="btn">Register</a>
+                        <a href="login.jsp" class="btn">Log in</a>
+                    </div>
+                    <%} else {%>
+
+                    <%}%>
+                    <!-- Mobile Menu -->
+                    <div class="col-12">
                         <div class="mobile_menu d-block d-lg-none"></div>
                     </div>
                 </div>
