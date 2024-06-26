@@ -76,14 +76,10 @@ public class LoginControler extends HttpServlet {
    
         String userName = request.getParameter("name");
         
-        if(userName.equals("user")){
+        if(userName.equals("user") || userName.equals("admin") ||userName.equals("pt")){
         session.setAttribute("name", userName);
-       
         }
-        if(userName.equals("admin")){
-        session.setAttribute("name", userName);
         
-        }
         response.sendRedirect("index.jsp");
     }
 

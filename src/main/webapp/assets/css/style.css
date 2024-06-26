@@ -297,6 +297,29 @@ h6 {
     border: 1px solid transparent;
     margin: 0 10px;
 }
+.table-head tr th{
+  width: 150px;
+  color: white;
+  font-size: 20px;
+  height:25px;
+}
+.table-body tr td{
+  height:25px;
+  color: white;
+  font-size: 20px;
+}
+.table{
+    height:400px;
+    margin-bottom: 100px;
+}
+.btnTable{
+    position: absolute;
+    bottom: 15.6%;
+    left: 42%;
+}
+.btnTable a{
+    margin-left: 20px;
+}
 /*================== Cate=======================*/
 .Cart{
      margin: 20px;
@@ -309,6 +332,7 @@ h6 {
     width: 50%;
     height: 50%;
 }
+
 /*=========================================*/
 /* line 23, C:/Users/HP/Desktop/July-HTML/292 Health coach/assets/scss/_common.scss */
 p {

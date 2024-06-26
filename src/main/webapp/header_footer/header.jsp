@@ -34,7 +34,7 @@
                     <%
                         String role = (String) session.getAttribute("name");
 
-                        if (role != null && (role.equals("user") || role.equals("admin"))) {%>
+                        if (role != null && (role.equals("user") || role.equals("admin")||role.equals("pt"))) {%>
 
 
                     <div class="main-menu f-right d-none d-lg-block">
@@ -46,13 +46,11 @@
                                     <ul class="submenu">
                                         <%if (role != null && role.equals("admin")) {%>
                                         <li><a href="profile.jsp?type=edit">Manager</a>
-                                            <ul class="submenu positionSubmenu">
-                                                <li><a  href="#" >  Manager User</a></li>
-                                                <li><a  href="#" >  Manager Blog</a></li>
-                                            </ul>
+                                            
                                         </li>
                                         <li><a href="chart.jsp">Chart</a></li>
                                             <%}%>
+                                        <li><a href="schedulePT.jsp">Schedule</a></li>
                                         <li><a href="profile.jsp?type=edit">Edit Profile</a></li>
                                         <li><a href="profile.jsp?type=changePass">Change passworld</a></li>
                                         <li><a href="<%=request.getContextPath()%>/LoginControler">Logout</a></li>

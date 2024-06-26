@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Category</title>
+        <title>Schedule</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="site.webmanifest">
@@ -45,7 +45,7 @@
                         <div class="row">
                             <div class="col-xl-12">
                                 <div class="hero-cap hero-cap2 pt-70">
-                                    <h2>Category</h2>
+                                    <h2>Schedule</h2>
                                 </div>
                             </div>
                         </div>
@@ -55,48 +55,99 @@
             <!-- Hero End -->
             <!--? Team -->
             <section class="team-area pt-80">
-                <div class="container2">
-                    <div style="margin: 50px;">
-                        <% String productid = request.getParameter("productid");
-                            String extend = ".png";
-                            if (productid != null && productid.equals("4")) {
-                                extend = ".jpg";
-                            }
-                        %>
+                <div class="container">
+                    <div class="schedules">
+                        <table class="table table-striped table-bordered table-hover table-responsive">
+                            <thead class="table-head">
+                                <tr>
+                                    <th></th>
+                                    <th>T2</th>
+                                    <th>T3</th>
+                                    <th>T4</th>
+                                    <th>T5</th>
+                                    <th>T6</th>
+                                    <th>T7</th>
+                                    <th>CN</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-body">
+                                <tr>
+                                    <td>7:00-9:00</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>9:00-11:00</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>13:00-15:00</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>15:00-17:00</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>17:00-19:00</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>19:00-20:00</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                            <% String checkRole = (String) session.getAttribute("name");
 
-                        <div class="Cart">
-                            <div class="single-cat text-center mb-30 wow fadeInUp " data-wow-duration="1s" data-wow-delay=".6s">
-
-                                <% if (productid != null) {%>
-                                <div class="row">
-                                    <div class="cat-icon imgProduct col-sm-4">
-                                        <img src="assets/img/shop/<%=productid + extend%>" alt="">
-                                    </div>
-                                    <div class="productDetail cat-cap col-sm-4">
-                                        <h5><a href="services.jsp">Detail Product</a></h5>
-                                        <p>Cung cấp một bữa ăn phụ với dinh dưỡng đầy đủ và 100% organic.Phát triển cơ bắp, chống dị hóa, đẩy nhanh tốc độ phục hồi và tăng trưởng cơ.
-                                            Kiểm soát cân nặng hiệu quả đối với những người đang thực hiện chế độ ăn kiêng, phù hợp với người ăn chay và ăn KETO.Dễ tiêu hóa, hạn chế nóng trong nổi mụn so với các loại whey protein.
-                                        </p>
-                                    </div>
-                                    <div class="col-sm-4" >
-                                        <p style="color: white !important; font-size: 30px;">Giá: 1.150.000đ</p>
-                                    </div>
-                                </div>
-                                <div class="" >
-                                    <p style="color: white !important; font-size: 30px;">nhập mã discount discount nếu có</p>
-                                    <p style="color: white !important; font-size: 30px;">Total 1.150.000đ</p>
-                                </div>
-                                <div class="btnAdd ">
-                                    <a class="btn" href="#">Thanh toán</a>
-                                </div>
-                                <%}%>
+                                if (checkRole != null && (checkRole.equals("admin") || checkRole.equals("pt"))) {%>
+                            <div class="btnTable">
+                                <a href="#" class="btn">Create</a>
+                                <a href="#" class="btn">Cancel</a>
                             </div>
-                        </div>
+                            <%}%>
+                        </table>
+
                     </div>
                 </div>
             </section>
             <!-- Services End -->
-            
+
+
             <!-- ? services-area -->
             <jsp:include page="header_footer/information.jsp"/>
         </main>

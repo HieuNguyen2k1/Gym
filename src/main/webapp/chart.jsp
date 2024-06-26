@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Shop</title>
+        <title>Chart</title>
      <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
@@ -65,7 +65,7 @@
                             <img src="assets/img/chart/chart.jpg" alt="">
                         </div>
                         <div class="chartContent cat-cap ">
-                            <h5><a href="services.jsp">Biểu đồ doanh thu tháng</a></h5>
+                            <h5><a href="services.jsp">Biểu đồ thống kê doanh thu</a></h5>
                             
                         </div>
                         <div class="btnChart ">
