@@ -18,7 +18,7 @@
                                 <li><a href="about.jsp">About</a></li>
                                 <!--    <li><a href="#">Courses</a></li>-->
                                 <li><a href="pricing.jsp">Pricing</a></li>
-                                <li><a href="#">Shop</a></li>
+                                <li><a href="shop.jsp">Shop</a></li>
                                 <li><a href="blog.jsp">Blog</a>
                                     <ul class="submenu">
                                         <li><a href="blog.jsp">Blog</a></li>
@@ -34,20 +34,25 @@
                     <%
                         String role = (String) session.getAttribute("name");
 
-                        if (role != null && (role.equals("user")|| role.equals("admin"))) {%>
+                        if (role != null && (role.equals("user") || role.equals("admin"))) {%>
 
 
                     <div class="main-menu f-right d-none d-lg-block">
                         <nav>
                             <ul id="navigations">
                                 <li><a class="mess" href="#" >  </a></li>
-                                <li><a class="cate" href="#" >  </a></li>
+                                <li><a class="cate" href="category.jsp" >  </a></li>
                                 <li> <a class="users" href="#" ></a>
                                     <ul class="submenu">
-                                        <%if (role != null &&  role.equals("admin")) {%>
-                                        <li><a href="profile.jsp?type=edit">Manager user</a></li>
-                                        <li><a href="profile.jsp?type=changePass">Chart</a></li>
-                                        <%}%>
+                                        <%if (role != null && role.equals("admin")) {%>
+                                        <li><a href="profile.jsp?type=edit">Manager</a>
+                                            <ul class="submenu positionSubmenu">
+                                                <li><a  href="#" >  Manager User</a></li>
+                                                <li><a  href="#" >  Manager Blog</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="chart.jsp">Chart</a></li>
+                                            <%}%>
                                         <li><a href="profile.jsp?type=edit">Edit Profile</a></li>
                                         <li><a href="profile.jsp?type=changePass">Change passworld</a></li>
                                         <li><a href="<%=request.getContextPath()%>/LoginControler">Logout</a></li>

@@ -45,7 +45,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="hero-cap hero-cap2 pt-70">
-                            <h2>Shop</h2>
+                            <h2>Chart</h2>
                         </div>
                     </div>
                 </div>
@@ -55,52 +55,22 @@
     <!-- Hero End -->
     <!--? Team -->
     <section class="team-area pt-80">
-        <div class="container">
-            <div class="products">
-                <div  class="shopParent">
-                    <div class="  single-cat text-center mb-30 wow fadeInUp row" data-wow-duration="1s" data-wow-delay=".2s" >
-                        <div class="cat-icon shops col-md-4">
-                            <img class="" src="assets/img/shop/2.png" alt="">
+        <div class="container2">
+            <div class="chart">
+                
+               
+                <div class="chartParent">
+                    <div class="single-cat text-center mb-30 wow fadeInUp " data-wow-duration="1s" data-wow-delay=".6s">
+                        <div class="cat-icon charts ">
+                            <img src="assets/img/chart/chart.jpg" alt="">
                         </div>
-                        <div class="productContent cat-cap col-md-6">
-                            <h5><a href="services.jsp">Orgain Organic Protein & Probiotics </a></h5>
-                            <p>Cung cấp một bữa ăn phụ với dinh dưỡng đầy đủ và 100% organic.Phát triển cơ bắp, chống dị hóa, đẩy nhanh tốc độ phục hồi và tăng trưởng cơ.
-                            Kiểm soát cân nặng hiệu quả đối với những người đang thực hiện chế độ ăn kiêng, phù hợp với người ăn chay và ăn KETO.Dễ tiêu hóa, hạn chế nóng trong nổi mụn so với các loại whey protein.
-                            </p>
-                            <p>Giá: 1.150.000đ</p>
+                        <div class="chartContent cat-cap ">
+                            <h5><a href="services.jsp">Biểu đồ doanh thu tháng</a></h5>
+                            
                         </div>
-                        <div class="btnDetail col-md-2">
-                            <a class="btn" href="productDetail.jsp?productid=2">More detail</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="shopParent">
-                    <div class=" single-cat text-center mb-30 wow fadeInUp row" data-wow-duration="1s" data-wow-delay=".4s">
-                        <div class="cat-icon shops col-md-4">
-                            <img src="assets/img/shop/3.png" alt="">
-                        </div>
-                        <div class="productContent cat-cap col-md-6">
-                            <h5><a href="services.jsp">Pre-Workout Black Blood NOX</a></h5>
-                            <p>Hỗ trợ giúp bạn tập luyện dẻo dai, lâu bền hơn và duy trì các chức năng của cơ bắp, giảm mệt mỏi, tăng cường độ luyện tập</p>
-                            <p>Giá: 700.000đ</p>
-                        </div>
-                        <div class="btnDetail col-md-2">
-                            <a class="btn" href="productDetail.jsp?productid=3">More detail</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="shopParent">
-                    <div class="single-cat text-center mb-30 wow fadeInUp row" data-wow-duration="1s" data-wow-delay=".6s">
-                        <div class="cat-icon shops col-md-4">
-                            <img src="assets/img/shop/4.jpg" alt="">
-                        </div>
-                        <div class="productContent cat-cap col-md-6">
-                            <h5><a href="services.jsp">Rule1 Protein</a></h5>
-                            <p>Rule 1 Protein là sản phẩm whey pha trộn giữa whey isolate và whey hydrolyzed. Hai nguồn protein hấp thụ nhanh, ít tạp chất và giàu amino axit là nguồn dinh dưỡng tốt cho sự phục hồi và phát triển cơ bắp.</p>
-                            <p>Giá: 1.590.000₫</p>
-                        </div>
-                        <div class="btnDetail col-md-2">
-                            <a class="btn" href="productDetail.jsp?productid=4">More detail</a>
+                        <div class="btnChart ">
+                            <a class="btn" href="#">Monthly chart</a>
+                            <a class="btn" href="#">year chart</a>
                         </div>
                     </div>
                 </div>

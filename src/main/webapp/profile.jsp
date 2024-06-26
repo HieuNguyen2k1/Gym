@@ -52,7 +52,7 @@
                                 <li><a href="about.jsp">About</a></li>
                                 <!--    <li><a href="#">Courses</a></li>-->
                                 <li><a href="pricing.jsp">Pricing</a></li>
-                                <li><a href="#">Shop</a></li>
+                                <li><a href="shop.jsp">Shop</a></li>
                                 <li><a href="blog.jsp">Blog</a>
                                     <ul class="submenu">
                                         <li><a href="blog.jsp">Blog</a></li>
