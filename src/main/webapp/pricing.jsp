@@ -39,6 +39,7 @@
     <!--=======================-->
 
         <main>
+             <%  String role = (String) session.getAttribute("name");  %>
             <!--? Hero Start -->
             <div class="slider-area2">
                 <div class="slider-height2 d-flex align-items-center">
@@ -114,7 +115,11 @@
                                                 <p>Month to mouth</p>
                                             </div>
                                         </div>-->
+                                          <%if (role != null && role.equals("user")) {%>
+                                         <a href="JoinCourse.jsp" class="border-btn border-btn2">Join Now</a>
+                                            <%} else {%>
                                         <a href="#" class="border-btn border-btn2">Join Now</a>
+                                        <%}%>
                                     </div>
                                 </div>
                             </div>
@@ -169,7 +174,11 @@
                                             </div>
                                         </div>
 
+                                       <%if (role != null && role.equals("user")) {%>
+                                         <a href="JoinCourse.jsp" class="border-btn border-btn2">Join Now</a>
+                                            <%} else {%>
                                         <a href="#" class="border-btn border-btn2">Join Now</a>
+                                        <%}%>
                                     </div>
                                 </div>
                             </div>
@@ -231,7 +240,11 @@
                                                 <p>Individualized coaching and dietary advice</p>
                                             </div>
                                         </div>
+                                       <%if (role != null && role.equals("user")) {%>
+                                         <a href="JoinCourse.jsp" class="border-btn border-btn2">Join Now</a>
+                                            <%} else {%>
                                         <a href="#" class="border-btn border-btn2">Join Now</a>
+                                        <%}%>
                                     </div>
                                 </div>
                             </div>

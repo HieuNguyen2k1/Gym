@@ -45,6 +45,9 @@
     background: #f7f7fd;
 }
 
+       
+   
+
 /* line 60, C:/Users/HP/Desktop/July-HTML/292 Health coach/assets/scss/_color.scss */
 .white-bg {
     background: #ffffff;
@@ -85,6 +88,10 @@
 .theme-color {
     color: #FF0000;
 }
+/*----------------------------------- Phan Css cua Video Call ----------------------------------------------*/
+
+ 
+/*------------------------------------------*/
 
 /* line 50, C:/Users/HP/Desktop/July-HTML/292 Health coach/assets/scss/_variables.scss */
 .boxed-btn {
@@ -320,6 +327,28 @@ h6 {
 .btnTable a{
     margin-left: 20px;
 }
+.tableUser thead tr th{
+    padding: 20px 146px;
+}
+.tableUser thead tr .action{
+    padding: 20px 226px;
+}
+.tableUser{
+    margin-top: 60px;
+    margin-bottom: 100px;
+}
+.btnUser a{
+    width: 30px;
+    font-size: 15px;
+    height: 20px;
+    padding: 15px 80px; 
+}
+.btnTableManager {
+    position: absolute;
+    top:45%;
+    left: 35%;
+}
+
 /*================== Cate=======================*/
 .Cart{
      margin: 20px;

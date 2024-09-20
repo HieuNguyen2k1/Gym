@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Shop</title>
+        <title>Chart</title>
      <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="assets/css/slick.css">
     <link rel="stylesheet" href="assets/css/nice-select.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    
 </head>
 <body class="black-bg">
     <!-- ? Preloader Start -->
@@ -45,7 +46,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="hero-cap hero-cap2 pt-70">
-                            <h2>Shop</h2>
+                            <h2>PTS</h2>
                         </div>
                     </div>
                 </div>
@@ -54,59 +55,67 @@
     </div>
     <!-- Hero End -->
     <!--? Team -->
-    <section class="team-area pt-80">
-        <div class="container">
-            <div class="products">
-                <div  class="shopParent">
-                    <div class="  single-cat text-center mb-30 wow fadeInUp row" data-wow-duration="1s" data-wow-delay=".2s" >
-                        <div class="cat-icon shops col-md-4">
-                            <img class="" src="assets/img/shop/2.png" alt="">
+    <section class="team-area fix">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="section-tittle text-center mb-55 wow fadeInUp"   data-wow-duration="1s" data-wow-delay=".1s">
+                                <h2 id="title">trainer list</h2>
+                            </div>
                         </div>
-                        <div class="productContent cat-cap col-md-6">
-                            <h5><a href="#">Orgain Organic Protein & Probiotics </a></h5>
-                            <p>Cung cấp một bữa ăn phụ với dinh dưỡng đầy đủ và 100% organic.Phát triển cơ bắp, chống dị hóa, đẩy nhanh tốc độ phục hồi và tăng trưởng cơ.
-                            Kiểm soát cân nặng hiệu quả đối với những người đang thực hiện chế độ ăn kiêng, phù hợp với người ăn chay và ăn KETO.Dễ tiêu hóa, hạn chế nóng trong nổi mụn so với các loại whey protein.
-                            </p>
-                            <p>Giá: 1.150.000đ</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-cat text-center mb-30 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s" >
+                                <div class="cat-icon">
+                                    <img src="assets/img/gallery/pt1.jpg" alt="">
+                                </div>
+                                 <div class="cat-cap">
+                                    <h5><a href="services.jsp">Nguyen Van A</a></h5>
+                                    <p>Nick name A Nguyen, and more than 2 years of making fitness instruction clips on YouTube. 
+                                         A Nguyen channel currently has nearly 348,000 subscribers and also owns many clips reaching "a million views".
+                                    </p>
+                                </div>
+                                <div class="properties__caption">
+                             <a href="#" class="border-btn border-btn2">Profile Detail</a>
                         </div>
-                        <div class="btnDetail col-md-2">
-                            <a class="btn" href="productDetail.jsp?productid=2">More detail</a>
+                                
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-cat text-center mb-30 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s">
+                                <div class="cat-icon">
+                                    <img src="assets/img/gallery/team2.png" alt="">
+                                </div>
+                                <div class="cat-cap">
+                                    <h5><a href="services.jsp">Nguyen Van B</a></h5>
+                                    <p>Nick name B Nguyen, and more than 2 years of making fitness instruction clips on YouTube. 
+                                        B Nguyen channel currently has nearly 348,000 subscribers and also owns many clips reaching "a million views". </p>
+                                </div>
+                                <div class="properties__caption">
+                             <a href="#" class="border-btn border-btn2">Profile Detail</a>
+                        </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-cat text-center mb-30 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".6s">
+                                <div class="cat-icon">
+                                    <img src="assets/img/gallery/pt3.jpg" alt="">
+                                </div>
+                                <div class="cat-cap">
+                                    <h5><a href="services.jsp">Nguyen Thi C</a></h5>
+                                    <p>
+                                        Is a quite famous personal fitness trainer on social networks with more than 500,000 followers on Instagram, 
+                                        possessing an attractive, healthy appearance and 6 years. Experience in the fitness field.</p>
+                                </div>
+                                <div class="properties__caption">
+                             <a href="#" class="border-btn border-btn2">Profile Detail</a>
+                        </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="shopParent">
-                    <div class=" single-cat text-center mb-30 wow fadeInUp row" data-wow-duration="1s" data-wow-delay=".4s">
-                        <div class="cat-icon shops col-md-4">
-                            <img src="assets/img/shop/3.png" alt="">
-                        </div>
-                        <div class="productContent cat-cap col-md-6">
-                            <h5><a href="#">Pre-Workout Black Blood NOX</a></h5>
-                            <p>Hỗ trợ giúp bạn tập luyện dẻo dai, lâu bền hơn và duy trì các chức năng của cơ bắp, giảm mệt mỏi, tăng cường độ luyện tập</p>
-                            <p>Giá: 700.000đ</p>
-                        </div>
-                        <div class="btnDetail col-md-2">
-                            <a class="btn" href="productDetail.jsp?productid=3">More detail</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="shopParent">
-                    <div class="single-cat text-center mb-30 wow fadeInUp row" data-wow-duration="1s" data-wow-delay=".6s">
-                        <div class="cat-icon shops col-md-4">
-                            <img src="assets/img/shop/4.jpg" alt="">
-                        </div>
-                        <div class="productContent cat-cap col-md-6">
-                            <h5><a href="#">Rule1 Protein</a></h5>
-                            <p>Rule 1 Protein là sản phẩm whey pha trộn giữa whey isolate và whey hydrolyzed. Hai nguồn protein hấp thụ nhanh, ít tạp chất và giàu amino axit là nguồn dinh dưỡng tốt cho sự phục hồi và phát triển cơ bắp.</p>
-                            <p>Giá: 1.590.000₫</p>
-                        </div>
-                        <div class="btnDetail col-md-2">
-                            <a class="btn" href="productDetail.jsp?productid=4">More detail</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
     <!-- Services End -->
   
   
