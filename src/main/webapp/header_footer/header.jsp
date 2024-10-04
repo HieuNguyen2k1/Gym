@@ -3,7 +3,7 @@
 <header>
     <style>
         .tab-container {
-            background: rgb(52, 40, 40);
+            background: #950101;
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             overflow: hidden;
@@ -27,13 +27,21 @@
             background: #f9f9f9;
             transition: background 0.3s;
         }
-        .tab:hover {
+        .content1:hover {
             background: #e9e9e9;
         }
-        .active {
-            background: white;
-            border-bottom: 1px solid white;
+        .content2:hover {
+            background: #e9e9e9;
+        }
+        .content3:hover {
+            background: #e9e9e9;
+        }
+            
+        .actives {
+            background: #950101;
+            color: white;
             font-weight: bold;
+            font-size: 20px;
         }
         .tab-content {
             padding: 10px;
@@ -59,7 +67,8 @@
             height: 100%;
             margin: 0;
             padding-top: 5px;
-
+            color: white;
+            background-color: #950101;
         }
         .avt-mes {
 
@@ -116,7 +125,7 @@
             padding: 10px;
             border: none;
             border-radius: 5px;
-            background-color: #007bff;
+            background-color: #950101;
             color: white;
             cursor: pointer;
         }
@@ -128,7 +137,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: #007bff;
+            background: #950101;
             color: white;
             padding: 5px 10px;
         }
@@ -268,10 +277,10 @@
     <!------------------- Modal Box Mess ----------------------->
     <div class="tab-container">
         <div class="">
-            <div class="tab active">Ban Be</div>
+            <div class="tab actives">Ban Be</div>
         </div>
         <div class="tab-content active" id="content1">
-            <div class="row mt-2">
+            <div class="row mt-2 content1">
                 <div class="avt-mes col-2">
                     <img
                         src="https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg"
@@ -284,7 +293,7 @@
                     >
                 </div>
             </div>
-            <div class="row mt-2">
+            <div class="row mt-2 content2">
                 <div class="avt-mes col-2">
                     <img
                         src="https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg"
@@ -297,7 +306,7 @@
                     >
                 </div>
             </div>
-            <div class="row mt-2">
+            <div class="row mt-2 content3">
                 <div class="avt-mes col-2">
                     <img
                         src="https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg"
@@ -325,15 +334,15 @@
         </div>
         <div class="chat-box" id="chatBox"></div>
         <div class="input-container">
-            <input type="text" id="messageInput" placeholder="Nh?p tin nh?n..." />
-            <button id="sendButton">G?i</button>
+            <input type="text" id="messageInput" placeholder="Nhap tin nhan..." />
+            <button id="sendButton">Gui</button>
         </div>
     </div>
     <!---------------- Video Call--------------------->
     <div class="call-modal" id="callModal">
         <div class="modal-content">
             <span class="close-modal" id="closeModal">&times;</span>
-            <h2>?ang g?i...</h2>
+            <h2>Calling...</h2>
             <video id="videoCall" autoplay></video>
         </div>
     </div>

@@ -75,7 +75,9 @@
                                     <td>7:00-9:00</td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
+                                    <td>
+                                        <a href="RoomMeet.jsp">room</a>
+                                    </td>
                                     <td></td>
                                     <td></td>
                                     <td></td>

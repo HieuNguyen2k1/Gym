@@ -43,6 +43,7 @@
       }
       .plan {
           display: none;
+          
       }
     </style>
     </head>
@@ -84,7 +85,7 @@
                         "
                         >
                         <div class="widths" >
-                            <h1 style="text-align: center">Kế hoạch tập luyện</h1>
+                            <h1 style="text-align: center ; color: white; margin-bottom: 70px;">Kế hoạch tập luyện</h1>
 
                             <div  class="header-btns btn-start start" style=" margin-top: 50px; display: flex; justify-content: center;">
                                 <a 
@@ -99,8 +100,8 @@
                                 <div class="row">
                                     <div class="col-lg-6"> 
 
-                                        <h1>Day 1</h1>
-                                        <p> - Đẩy tạ trên ghế: 4 hiệp x 8 - 10 lần.</br>
+                                        <h1 style="color: white;">Day 1</h1>
+                                        <p style="color: white;"> - Đẩy tạ trên ghế: 4 hiệp x 8 - 10 lần.</br>
                                             - Gập người kéo tạ đòn: 4 hiệp x 8 - 10 lần.</br>
                                             - Đẩy tạ đòn qua đầu: 3 hiệp x 10 - 12 lần.</br>
                                             - Bài tập bắp tay: 3 hiệp x 10 - 12 lần.</br>
@@ -109,21 +110,14 @@
 
                                     </div>
                                     <div class="col-lg-6">
-                                        <iframe
-                                            width="400"
-                                            height="300"
-                                            src="https://www.youtube.com/embed/v=yzAO8ozWfCQ&pp=ygUqY8OhY2ggaMOtdCDEkeG6pXQgY2hvIG5nxrDhu51pIG3hu5tpIHThuq1w"
-                                            frameborder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowfullscreen
-                                            style="margin-top: 20px;"
-                                            ></iframe>
+                                        <iframe width="400" height="300" src="https://www.youtube.com/embed/wkMCGeBdbyE" title="DỄ // 10 Phút tập NGỰC &amp; TAY SAU ngay tại nhà (0 dụng cụ) | Chest &amp; Triceps Home Workout | SHINPHAMM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                                     </div>
                                 </div>
                                 <div> 
-                                    <div>
-                                        <h1>Day 2</h1>
-                                        <p> 
+                                    <div >
+                                        <h1 style="color: white;">Day 2</h1>
+                                        <p style="color: white;"> 
                                             - Squat: 4 hiệp x 8 - 10 lần.</br>
                                             - Deadlift (nâng thanh tạ): 4 hiệp x 8 - 10 lần.</br>
                                             - Lunges (bước tới và gập gối): 3 hiệp x 10 - 12 lần mỗi chân.</br>
@@ -146,7 +140,7 @@
                         "
                         >
                         <div class="widths">
-                            <h1>Theo dõi cân nặng các tuần trong tháng</h1>
+                            <h1 style="color: white; margin-bottom: 70px;">Theo dõi cân nặng các tuần trong tháng</h1>
                             <canvas id="weightChart"></canvas>
                             <div class="header-btns" style=" margin-top: 5px; display: flex; justify-content: center;">
                                 <a
