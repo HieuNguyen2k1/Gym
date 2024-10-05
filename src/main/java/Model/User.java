@@ -19,7 +19,7 @@ public class User {
     
    private String address;
    private String image;
-   private String Status;
+   private String status;
     
    private double discount;
    private int height;
@@ -89,11 +89,11 @@ public class User {
     }
 
     public String getStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(String Status) {
-        this.Status = Status;
+        this.status = Status;
     }
 
     public double getDiscount() {
@@ -128,7 +128,7 @@ public class User {
         this.role = role;
         this.address = address;
         this.image = image;
-        this.Status = Status;
+        this.status = Status;
         this.discount = discount;
         this.height = height;
     }
