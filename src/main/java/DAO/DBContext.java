@@ -12,7 +12,7 @@ import java.sql.SQLException;
  * @author HP
  */
 public class DBContext {
-    private String url = "jdbc:sqlserver://DESKTOP-HOA8KMR;databaseName=Gym;encrypt=true;trustServerCertificate=true"; // Thay đổi tên cơ sở dữ liệu
+    private String url = "jdbc:sqlserver://DESKTOP-HOA8KMR;databaseName=Gym;encrypt=true;trustServerCertificate=true;loginTimeout=30;"; // Thay đổi tên cơ sở dữ liệu
     private String user = "sa"; // Thay đổi tên người dùng
     private String password = "123"; // Thay đổi mật khẩu
     private Connection conn;

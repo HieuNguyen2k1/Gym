@@ -5,10 +5,13 @@
 package Test;
 
 import DAO.DBContext;
+import DAO.ProductDAO;
+import Model.Product;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 /**
  *
@@ -16,7 +19,26 @@ import java.sql.Statement;
  */
 public class TestDB {
 
-//    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException {
+        
+//        ProductDAO p = new ProductDAO();
+//        
+//        p.GetListProduct();
+//        List<Product> products = p.GetListProduct();
+//        
+//        for (int i = 0; i < products.size(); i++) {
+//            Product product = products.get(i);
+//            System.out.println("ID: " + product.getId() + ", Name: " + product.getProName() +
+//                               ", Price: " + product.getPrice() + ", Description: " + product.getDescribe());
+//        }
+//        System.out.println("=============== for each=========");
+//        for (Product product : products) {
+//            System.out.println("ID: " + product.getId() + ", Name: " + product.getProName() +
+//                               ", Price: " + product.getPrice() + ", Description: " + product.getDescribe());
+//        }
+        
+        
+        
 //        DBContext dbContext = new DBContext();
 //        Connection connection = dbContext.getConnection();
 //
@@ -46,6 +68,6 @@ public class TestDB {
 //        } else {
 //            System.out.println("Kết nối thất bại!");
 //        }
-//    }
+    }
 
 }

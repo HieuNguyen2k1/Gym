@@ -17,8 +17,24 @@ public class Product {
     private float weigth;
     private int stock;
     private String describe;
+    
+    private String status;
+    private String image;
+    private int cateId;
 
     public Product() {
+    }
+
+    public Product(int id, String proName, double price, float weigth, int stock, String describe, String status, String image, int cateId) {
+        this.id = id;
+        this.proName = proName;
+        this.price = price;
+        this.weigth = weigth;
+        this.stock = stock;
+        this.describe = describe;
+        this.status = status;
+        this.image = image;
+        this.cateId = cateId;
     }
 
     public int getId() {
@@ -85,17 +101,15 @@ public class Product {
         this.image = image;
     }
 
-    public String getCateId() {
+    public int getCateId() {
         return cateId;
     }
 
-    public void setCateId(String cateId) {
+    public void setCateId(int cateId) {
         this.cateId = cateId;
     }
 
-    private String status;
-    private String image;
-    private String cateId;
+    
 
 
 }

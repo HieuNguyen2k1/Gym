@@ -36,7 +36,7 @@
         .content3:hover {
             background: #e9e9e9;
         }
-            
+
         .actives {
             background: #950101;
             color: white;
@@ -196,18 +196,18 @@
             <div class="container-fluid">
                 <div class="menu-wrapper d-flex align-items-center justify-content-between">
                     <!-- Logo -->
-                    <div class="logo">
+                    <div class="logo col-md-4">
                         <a href="index.jsp"><img src="assets/img/logo/logo1.png" alt=""></a>
                     </div>
                     <!-- Main-menu -->
-                    <div class="main-menu f-right d-none d-lg-block">
+                    <div class="main-menu f-right d-none d-lg-block col-md-5">
                         <nav>
                             <ul id="navigation">
                                 <li><a href="index.jsp">Home</a></li>
                                 <li><a href="about.jsp">About</a></li>
                                 <!--    <li><a href="#">Courses</a></li>-->
                                 <li><a href="pricing.jsp">Pricing</a></li>
-                                <li><a href="shop.jsp">Shop</a></li>
+                                <li><a href="ProductController">Shop</a></li>
                                 <li><a href="blog.jsp">Blog</a>
                                     <ul class="submenu">
                                         <li><a href="blog.jsp">Blog</a></li>
@@ -215,7 +215,7 @@
                                         <!--    <li><a href="#">Elements</a></li>-->
                                     </ul>
                                 </li>
-                                
+
                                 <li><a href="contact.jsp">Contact</a></li>
                             </ul>
                         </nav>
@@ -227,7 +227,7 @@
                         if (role != null && (role.equals("user") || role.equals("admin") || role.equals("pt"))) {%>
 
 
-                    <div class="main-menu f-right d-none d-lg-block">
+                    <div class="main-menu f-right d-none d-lg-block col-md-2">
                         <nav>
                             <ul id="navigations">
                                 <li><a class="mess" href="#" >  </a>
@@ -243,13 +243,13 @@
                                         <li><a href="schedulePT.jsp">Schedule</a></li>
                                         <li><a href="profile.jsp?type=edit">Edit Profile</a></li>
                                         <li><a href="profile.jsp?type=changePass">Change passworld</a></li>
-                                        <%if (role.equals("user")) {%>
-                                         <li><a href="JoinCourse.jsp">Join</a></li>
+                                            <%if (role.equals("user")) {%>
+                                        <li><a href="JoinCourse.jsp">Join</a></li>
                                             <%}%>
                                         <li><a href="CallVideo.jsp">Call</a></li>
-                                        
+
                                         <li><a href="<%=request.getContextPath()%>/LoginControler">Logout</a></li>
-                                        
+
                                     </ul>
                                 </li>
                             </ul>
@@ -358,15 +358,17 @@
     const tabContainer = document.querySelector(".tab-container");
     const mess = document.querySelector(".mess");
     const closeChatButton = document.getElementById("closeChat");
-
-    mess.addEventListener("click", (e) => {
-        e.stopPropagation();
-        if (tabContainer.style.display === "block") {
-            tabContainer.style.display = "none"; // ?n tabContainer
-        } else {
-            tabContainer.style.display = "block"; // Hi?n tabContainer
-        }
-    });
+    var role = "<%= role != null ? role : "null"%>";
+    if (role !== "null") {
+        mess.addEventListener("click", (e) => {
+            e.stopPropagation();
+            if (tabContainer.style.display === "block") {
+                tabContainer.style.display = "none"; // ?n tabContainer
+            } else {
+                tabContainer.style.display = "block"; // Hi?n tabContainer
+            }
+        });
+    }
     document.addEventListener("click", (e) => {
 
         if (!tabContainer.contains(e.target) && !mess.contains(e.target)) {
