@@ -233,7 +233,7 @@
                                 <li><a class="mess" href="#" >  </a>
 
                                 </li>
-                                <li><a class="cate" href="category.jsp" >  </a></li>
+                                <li><a class="cate" href="<%=request.getContextPath()%>/CartController"" >  </a></li>
                                 <li> <a class="users" href="#" ></a>
                                     <ul class="submenu">
                                         <%if (role != null && role.equals("admin")) {%>

@@ -4,6 +4,11 @@
     Author     : HP
 --%>
 
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="Model.Product"%>
+<%@page import="Model.OrderDetail"%>
+<%@page import="Model.Order"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -57,46 +62,77 @@
             <section class="team-area pt-80">
                 <div class="container2">
                     <div style="margin: 50px;">
-                        <% String productid = request.getParameter("productid");
-                            String extend = ".png";
-                            if (productid != null && productid.equals("4")) {
-                                extend = ".jpg";
-                            }
+                        <%
+                            List<Order> orders = (List<Order>) request.getAttribute("orders");
+                            List<OrderDetail> orderDetails = (List<OrderDetail>) request.getAttribute("orderDetails");
+                            List<Product> products = (List<Product>) request.getAttribute("products");
+
+                            if (orders != null) {
                         %>
 
                         <div class="Cart">
-                            <div class="single-cat text-center mb-30 wow fadeInUp " data-wow-duration="1s" data-wow-delay=".6s">
+                            <form>
+                                <% for (Order order : orders) { %>
+                                <div class="single-cat text-center mb-30 wow fadeInUp " data-wow-duration="1s" data-wow-delay=".6s">
+                                    <div class="row">
+                                        <div class="cat-icon imgProduct col-sm-4">
+                                            <img src="assets/img/shop/2.png" alt="">
+                                        </div>
+                                        <% for (OrderDetail orderDetail : orderDetails) {
 
-                                <% if (productid != null) {%>
-                                <div class="row">
-                                    <div class="cat-icon imgProduct col-sm-4">
-                                        <img src="assets/img/shop/<%=productid + extend%>" alt="">
+                                                if (order.getId() == orderDetail.getOrderId()) {
+                                        %>
+                                        <div class="productDetail cat-cap col-sm-4">
+                                            <% for (Product product : products) {
+
+                                                    if (orderDetail.getProId() == product.getId()) {
+                                            %>
+                                            <h5><a href="services.jsp"><%=product.getProName()%></a></h5>
+
+                                            <%
+                                                double price = product.getPrice() * 1000;
+                                                DecimalFormat df = new DecimalFormat("#,###");
+                                                String formattedPrice = df.format(price);
+                                                formattedPrice = formattedPrice.replace(",", " ");
+                                            %>
+
+                                            <h5><a href="services.jsp"><%=formattedPrice%></a></h5>
+                                                <%}
+                                                    }%>
+                                        </div>
+                                        <div class="col-sm-4" >
+                                            <p style="color: white !important; font-size: 30px;"><%=orderDetail.getQuantity()%></p>
+                                        </div>
+                                        <%}
+                                            }%>
                                     </div>
-                                    <div class="productDetail cat-cap col-sm-4">
-                                        <h5><a href="services.jsp">Detail Product</a></h5>
-                                        <p>Cung cấp một bữa ăn phụ với dinh dưỡng đầy đủ và 100% organic.Phát triển cơ bắp, chống dị hóa, đẩy nhanh tốc độ phục hồi và tăng trưởng cơ.
-                                            Kiểm soát cân nặng hiệu quả đối với những người đang thực hiện chế độ ăn kiêng, phù hợp với người ăn chay và ăn KETO.Dễ tiêu hóa, hạn chế nóng trong nổi mụn so với các loại whey protein.
-                                        </p>
+                                    <div class="" >
+                                        <p style="color: white !important; font-size: 30px;">nhập mã discount discount nếu có</p>
+
+                                        <%
+                                            double price = order.getTotalPrice() * 1000;
+                                            DecimalFormat df = new DecimalFormat("#,###");
+                                            String formattedPrice = df.format(price);
+                                            formattedPrice = formattedPrice.replace(",", " ");
+                                        %>
+
+                                        <p style="color: white !important; font-size: 30px;"><%=formattedPrice%></p>
                                     </div>
-                                    <div class="col-sm-4" >
-                                        <p style="color: white !important; font-size: 30px;">Giá: 1.150.000đ</p>
-                                    </div>
+
                                 </div>
-                                <div class="" >
-                                    <p style="color: white !important; font-size: 30px;">nhập mã discount discount nếu có</p>
-                                    <p style="color: white !important; font-size: 30px;">Total 1.150.000đ</p>
-                                </div>
+                                <%} %>
                                 <div class="btnAdd ">
                                     <a class="btn" href="#">Thanh toán</a>
                                 </div>
                                 <%}%>
-                            </div>
+
+                            </form>
                         </div>
                     </div>
                 </div>
             </section>
             <!-- Services End -->
-            
+
             <!-- ? services-area -->
             <jsp:include page="header_footer/information.jsp"/>
         </main>

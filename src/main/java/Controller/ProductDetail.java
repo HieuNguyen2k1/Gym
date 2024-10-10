@@ -4,14 +4,16 @@
  */
 package Controller;
 
-import DAO.CategoryDAO;
+import DAO.OrderDAO;
+import DAO.OrderDetailDAO;
 import DAO.ProductDAO;
-import Model.Category;
+import Model.Order;
+import Model.OrderDetail;
 import Model.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Date;
+import java.time.LocalDate;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -23,7 +25,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author HP
  */
-public class ProductController extends HttpServlet {
+public class ProductDetail extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,10 +44,10 @@ public class ProductController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ProductController</title>");
+            out.println("<title>Servlet ProductDetail</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ProductController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ProductDetail at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -63,32 +65,16 @@ public class ProductController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String cateId = request.getParameter("cateId");
-        try {
-            ProductDAO proDao = new ProductDAO();
-            CategoryDAO cateDao = new CategoryDAO();
-            List<Product> listPro = new ArrayList<Product>();
-            
-            if (cateId != null) {
-                int number = Integer.parseInt(cateId);
-                listPro = proDao.GetListProductByIdCate(number);
-            } else {
-                listPro = proDao.GetListProduct();
-            }
-            
-            List<Category> listCate = cateDao.GetListCategory();
-            if (listPro != null && listCate != null) {
-                HttpSession session = request.getSession();
-                session.setAttribute("productList", listPro);
-                session.setAttribute("cateList", listCate);
-            }
-            RequestDispatcher dispatcher = request.getRequestDispatcher("shop.jsp");
-            dispatcher.forward(request, response);
-        } catch (Exception e) {
-            e.printStackTrace(); // Ghi lại ngoại lệ để gỡ lỗi
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Đã xảy ra lỗi trong quá trình xử lý yêu cầu của bạn.");
-        }
+        String proId = request.getParameter("productid");
 
+        ProductDAO proDao = new ProductDAO();
+        if (proId != null) {
+            int id = Integer.parseInt(proId);
+            Product product = proDao.GetProductById(id);
+            request.setAttribute("product", product);
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("productDetail.jsp");
+        dispatcher.forward(request, response);
     }
 
     /**
@@ -102,7 +88,34 @@ public class ProductController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
+        String proId = request.getParameter("proId");
+        String quantity = request.getParameter("quantity");
+        HttpSession session = request.getSession();
+
+        if (proId != null && quantity != null) {
+            ProductDAO proDao = new ProductDAO();
+            OrderDAO orderDao = new OrderDAO();
+            OrderDetailDAO orderDetailDao = new OrderDetailDAO();
+
+            int idPro = Integer.parseInt(proId);
+            int count = Integer.parseInt(quantity);
+            int idUser = (int) session.getAttribute("IdUser");
+
+            Product product = proDao.GetProductById(idPro);
+            double price = count * product.getPrice();
+            LocalDate today = LocalDate.now();
+            Date now = Date.valueOf(today);
+
+            Order order = new Order(now, now, price, 0, "Ship Extra", "c", idUser);
+            int idOrder = orderDao.AddOrder(order);
+            OrderDetail orderDetail = new OrderDetail(idOrder, count, price, idPro, product.getPrice());
+            orderDetailDao.AddOrderDetail(orderDetail);
+            response.sendRedirect("ProductController");
+        } else {
+            response.sendRedirect("ProductController");
+        }
+
     }
 
     /**

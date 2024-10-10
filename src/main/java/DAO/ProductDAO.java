@@ -24,11 +24,11 @@ public class ProductDAO {
     }
 
     DBContext dbContext = new DBContext();
-    Connection connection = dbContext.getConnection();
+    Connection connection;
     String sql = "";
 
     public List<Product> GetListProduct() {
-//         sql = "Select * from Users where email =? and pass =? ";
+        connection = dbContext.getConnection();
         sql = "Select * from Products ";
         List<Product> products = new ArrayList<>();
 
@@ -61,6 +61,7 @@ public class ProductDAO {
     }
 
     public List<Product> GetListProductByIdCate(int id) {
+        connection = dbContext.getConnection();
         sql = "Select * from Products where CateId =?";
         List<Product> products = new ArrayList<>();
 
@@ -90,5 +91,36 @@ public class ProductDAO {
             dbContext.closeConnection(); // Đóng kết nối sau khi sử dụng
         }
         return products;
+    }
+
+    public Product GetProductById(int id) {
+        connection = dbContext.getConnection();
+        sql = "Select * from Products where Id =?";
+        Product product = new Product();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            // Hiển thị kết quả
+            while (resultSet.next()) {
+                // Giả sử bảng Users có các cột id và name
+                product.setId(resultSet.getInt("Id"));
+                product.setProName(resultSet.getString("ProName"));
+                product.setPrice(resultSet.getDouble("Price"));
+                product.setDescribe(resultSet.getString("Describe"));
+
+                product.setWeigth(resultSet.getFloat("Weight"));
+                product.setCateId(resultSet.getInt("CateId"));
+                product.setImage(resultSet.getString("Image"));
+                product.setStatus(resultSet.getString("Status"));
+                product.setStock(resultSet.getInt("UnitInStock"));
+
+            }
+        } catch (SQLException e) {
+            System.out.println("Lỗi thực thi câu truy vấn: " + e.getMessage());
+        } finally {
+            dbContext.closeConnection(); // Đóng kết nối sau khi sử dụng
+        }
+        return product;
     }
 }

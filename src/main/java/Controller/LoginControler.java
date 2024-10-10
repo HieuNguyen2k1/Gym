@@ -89,6 +89,7 @@ public class LoginControler extends HttpServlet {
         
         if (userName.equals(user.getRole()) || userName.equals(user.getRole()) || userName.equals(user.getRole())) {
             session.setAttribute("name", userName);
+            session.setAttribute("IdUser", user.getId());
         }
 
         response.sendRedirect("index.jsp");

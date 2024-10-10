@@ -4,6 +4,8 @@
     Author     : HP
 --%>
 
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="Model.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -29,6 +31,31 @@
         <link rel="stylesheet" href="assets/css/slick.css">
         <link rel="stylesheet" href="assets/css/nice-select.css">
         <link rel="stylesheet" href="assets/css/style.css">
+        <style>
+            .quantity-control {
+                display: flex;
+                align-items: center;
+            }
+
+            .quantity-input {
+                width: 50px;
+                text-align: center;
+                margin: 0 10px;
+            }
+
+            .btn-minus, .btn-plus {
+                background-color: #007bff;
+                color: white;
+                border: none;
+                padding: 5px 10px;
+                cursor: pointer;
+                text-decoration: none;
+            }
+
+            .btn-minus:hover, .btn-plus:hover {
+                background-color: #0056b3;
+            }
+        </style>
     </head>
     <body class="black-bg">
         <!-- ? Preloader Start -->
@@ -38,6 +65,9 @@
         <jsp:include page="header_footer/header.jsp"/>
         <!--=======================-->
         <main>
+            <%
+                Product product = (Product) request.getAttribute("product");
+            %>
             <!--? Hero Start -->
             <div class="slider-area2">
                 <div class="slider-height2 d-flex align-items-center">
@@ -45,7 +75,7 @@
                         <div class="row">
                             <div class="col-xl-12">
                                 <div class="hero-cap hero-cap2 pt-70">
-                                    <h2>Product detail</h2>
+                                    <h2>Product Detail</h2>
                                 </div>
                             </div>
                         </div>
@@ -57,37 +87,46 @@
             <section class="team-area pt-80">
                 <div class="container2">
                     <div class="">
-                        <% String productid = request.getParameter("productid");
-                            String extend= ".png";
-                        if(productid!=null&& productid.equals("4") ){
-                            extend = ".jpg";
-                            }
-                        %>
+                        
 
                         <div class="productDetailParent">
                             <div class="single-cat text-center mb-30 wow fadeInUp row" data-wow-duration="1s" data-wow-delay=".6s">
                                 <div class="cat-icon imgProduct col-md-6">
-                                    <img src="assets/img/shop/<%=productid + extend%>" alt="">
+                                    <img src="assets/img/shop/2.png" alt="">
                                 </div>
+
                                 <div class="col-md-4">
-                                    <div class="productDetail cat-cap ">
-                                        <h5><a href="services.jsp">Detail Product</a></h5>
-                                        <p>Cung cấp một bữa ăn phụ với dinh dưỡng đầy đủ và 100% organic.Phát triển cơ bắp, chống dị hóa, đẩy nhanh tốc độ phục hồi và tăng trưởng cơ.
-                                            Kiểm soát cân nặng hiệu quả đối với những người đang thực hiện chế độ ăn kiêng, phù hợp với người ăn chay và ăn KETO.Dễ tiêu hóa, hạn chế nóng trong nổi mụn so với các loại whey protein.
-                                        </p>
-                                        <p>Giá: 1.150.000đ</p>
-                                    </div>
-                                    <div class="quantity-control">
-                                        <button class="btn-minus">-</button>
-                                        <input type="text" class="quantity-input" value="1">
-                                        <button class="btn-plus">+</button>
-                                    </div>
-                                    <div class="btnAdd ">
+                                    <form method="post" action="ProductDetail">
+                                        <div class="productDetail cat-cap ">
+                                            <input type="hidden" name="proId" value="<%=product.getId()%>">
+                                            <h5><a href="#"><%=product.getProName()%></a></h5>
+                                            <p>
+                                                <%=product.getDescribe()%>
+                                            </p>
 
-                                        <a class="btn" href="category.jsp?productid=<%=productid%>">Add to cart</a>
+                                            <%
+                                                double price = product.getPrice() * 1000;
+                                                DecimalFormat df = new DecimalFormat("#,###");
+                                                String formattedPrice = df.format(price);
+                                                formattedPrice = formattedPrice.replace(",", " ");
+                                            %>
 
-                                    </div>
+                                            <p>Giá: <%=formattedPrice%> đ</p>
+                                        </div>
+                                        <div class="quantity-control">
+
+                                            <a href="#" class="btn-minus" role="button" tabindex="0" aria-label="Decrease quantity">-</a>
+                                            <input type="number" name="quantity" class="quantity-input" value="1" min="1" aria-label="Quantity">
+                                            <a href="#" class="btn-plus" role="button" tabindex="0" aria-label="Increase quantity">+</a> 
+                                        </div>
+                                        <div class="btnAdd ">
+
+                                            <button type="submit" style="background-color: transparent; border: 0;" ><a class="btn" >Add to cart</a></button>
+
+                                        </div>
+                                    </form>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -95,21 +134,29 @@
             </section>
             <!-- Services End -->
             <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    const quantityInput = document.querySelector('.quantity-input');
-                    const btnMinus = document.querySelector('.btn-minus');
-                    const btnPlus = document.querySelector('.btn-plus');
+                document.querySelector('.btn-minus').addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const input = document.querySelector('.quantity-input');
+                    let value = parseInt(input.value);
+                    if (value > 1) {
+                        input.value = value - 1;
+                    }
+                });
 
-                    btnMinus.addEventListener('click', function () {
-                        let currentValue = parseInt(quantityInput.value);
-                        if (currentValue > 1) {
-                            quantityInput.value = currentValue - 1;
+                document.querySelector('.btn-plus').addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const input = document.querySelector('.quantity-input');
+                    let value = parseInt(input.value);
+                    input.value = value + 1;
+                });
+
+
+                document.querySelectorAll('.quantity-control a[role="button"]').forEach(button => {
+                    button.addEventListener('keydown', function (event) {
+                        if (event.key === 'Enter' || event.key === ' ') {
+                            event.preventDefault();
+                            this.click();
                         }
-                    });
-
-                    btnPlus.addEventListener('click', function () {
-                        let currentValue = parseInt(quantityInput.value);
-                        quantityInput.value = currentValue + 1;
                     });
                 });
             </script>

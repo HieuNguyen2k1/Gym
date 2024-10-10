@@ -4,9 +4,11 @@
  */
 package Controller;
 
-import DAO.CategoryDAO;
+import DAO.OrderDAO;
+import DAO.OrderDetailDAO;
 import DAO.ProductDAO;
-import Model.Category;
+import Model.Order;
+import Model.OrderDetail;
 import Model.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -23,7 +25,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author HP
  */
-public class ProductController extends HttpServlet {
+public class CartController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,10 +44,10 @@ public class ProductController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ProductController</title>");
+            out.println("<title>Servlet CartController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ProductController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet CartController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -63,31 +65,40 @@ public class ProductController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String cateId = request.getParameter("cateId");
-        try {
-            ProductDAO proDao = new ProductDAO();
-            CategoryDAO cateDao = new CategoryDAO();
-            List<Product> listPro = new ArrayList<Product>();
-            
-            if (cateId != null) {
-                int number = Integer.parseInt(cateId);
-                listPro = proDao.GetListProductByIdCate(number);
-            } else {
-                listPro = proDao.GetListProduct();
+        HttpSession session = request.getSession();
+        int idUser = (int) session.getAttribute("IdUser");
+
+        ProductDAO proDao = new ProductDAO();
+        OrderDAO orderDao = new OrderDAO();
+        OrderDetailDAO orderDetailDao = new OrderDetailDAO();
+
+        List<Order> orders = orderDao.GetListOrder(idUser);
+        List<OrderDetail> orderDetails = new ArrayList<>();
+        List<Product> products = new ArrayList<>();
+
+        if (orders != null) {
+            for (Order order : orders) {
+                OrderDetail orderDetail = orderDetailDao.GetOrderDetailByIdOrder(order.getId());
+                if (orderDetail != null) {
+                    orderDetails.add(orderDetail);
+                }
             }
-            
-            List<Category> listCate = cateDao.GetListCategory();
-            if (listPro != null && listCate != null) {
-                HttpSession session = request.getSession();
-                session.setAttribute("productList", listPro);
-                session.setAttribute("cateList", listCate);
+            if (orderDetails != null) {
+                for (OrderDetail orderDetail : orderDetails) {
+                    Product product = proDao.GetProductById(orderDetail.getProId());
+                    if (product != null) {
+                        products.add(product);
+                    }
+                }
             }
-            RequestDispatcher dispatcher = request.getRequestDispatcher("shop.jsp");
-            dispatcher.forward(request, response);
-        } catch (Exception e) {
-            e.printStackTrace(); // Ghi lại ngoại lệ để gỡ lỗi
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Đã xảy ra lỗi trong quá trình xử lý yêu cầu của bạn.");
         }
+
+        request.setAttribute("orders", orders);
+        request.setAttribute("orderDetails", orderDetails);
+        request.setAttribute("products", products);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("category.jsp");
+        dispatcher.forward(request, response);
 
     }
 

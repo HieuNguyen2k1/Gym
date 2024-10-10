@@ -122,7 +122,7 @@
                                         
                                     </div>
                                     <div class="btnDetail ">
-                                        <a class="btn" href="productDetail.jsp?productid=2">More detail</a>
+                                        <a class="btn" href="${pageContext.request.contextPath}/ProductDetail?productid=<%=product.getId()%>">More detail</a>
                                     </div>
 
                                 </div>

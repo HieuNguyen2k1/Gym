@@ -4,17 +4,34 @@
  */
 package Model;
 
-import java.time.LocalDate;
+import java.sql.Date;
 
 /**
  *
  * @author HP
  */
 public class Order {
-    
+
     private int id;
-    private LocalDate  orderDate;
-     private LocalDate  shipperDate;
+    private Date orderDate;
+    private Date shipperDate;
+
+    public Order(Date orderDate, Date shipperDate, double totalPrice, float discount, String frieght, String status, int userId) {
+        this.orderDate = orderDate;
+        this.shipperDate = shipperDate;
+        this.totalPrice = totalPrice;
+        this.discount = discount;
+        this.frieght = frieght;
+        this.status = status;
+        this.userId = userId;
+    }
+    
+    private double totalPrice;
+    private float discount;
+    private String frieght;
+
+    private String status;
+    private int userId;
 
     public Order() {
     }
@@ -27,19 +44,19 @@ public class Order {
         this.id = id;
     }
 
-    public LocalDate getOrderDate() {
+    public Date getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(LocalDate orderDate) {
+    public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
     }
 
-    public LocalDate getShipperDate() {
+    public Date getShipperDate() {
         return shipperDate;
     }
 
-    public void setShipperDate(LocalDate shipperDate) {
+    public void setShipperDate(Date shipperDate) {
         this.shipperDate = shipperDate;
     }
 
@@ -83,10 +100,4 @@ public class Order {
         this.userId = userId;
     }
 
-    private double totalPrice;
-    private float discount;
-    private String frieght;
-
-    private String status;
-     private int userId;
 }

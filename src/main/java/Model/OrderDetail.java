@@ -9,18 +9,29 @@ package Model;
  * @author HP
  */
 public class OrderDetail {
-    
+    private int orderId;
     private int quantity;
-
     private double totalPrice;
     private int proId;
+    private double pricePro;
 
-    public OrderDetail(int quantity, double totalPrice, int proId, int orderId) {
+    public double getPricePro() {
+        return pricePro;
+    }
+
+    public void setPricePro(double pricePro) {
+        this.pricePro = pricePro;
+    }
+
+    public OrderDetail(int orderId, int quantity, double totalPrice, int proId, double pricePro) {
+        this.orderId = orderId;
         this.quantity = quantity;
         this.totalPrice = totalPrice;
         this.proId = proId;
-        this.orderId = orderId;
+        this.pricePro = pricePro;
     }
+
+    
 
     public OrderDetail() {
     }
@@ -56,6 +67,6 @@ public class OrderDetail {
     public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
-    private int orderId;
+    
     
 }
