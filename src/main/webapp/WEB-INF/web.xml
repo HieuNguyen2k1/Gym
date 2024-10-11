@@ -19,6 +19,10 @@
         <servlet-name>CartController</servlet-name>
         <servlet-class>Controller.CartController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PaymentController</servlet-name>
+        <servlet-class>Controller.PaymentController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginControler</servlet-name>
         <url-pattern>/LoginControler</url-pattern>
@@ -35,6 +39,28 @@
         <servlet-name>CartController</servlet-name>
         <url-pattern>/CartController</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PaymentController</servlet-name>
+        <url-pattern>/PaymentController</url-pattern>
+    </servlet-mapping>
+    
+    
+    <context-param>
+        <param-name>vnp_TmnCode</param-name>
+        <param-value>ALVK1ZP0</param-value>
+    </context-param>
+    <context-param>
+        <param-name>vnp_HashSecret</param-name>
+        <param-value>35SZ67VHRXFDAYW46UNUQDRR35578M8V</param-value>
+    </context-param>
+    <context-param>
+        <param-name>vnp_Url</param-name>
+        <param-value>https://sandbox.vnpayment.vn/paymentv2/vpcpay.html</param-value>
+    </context-param>
+    <context-param>
+        <param-name>ReturnUrl</param-name>
+        <param-value>http://localhost:8080/gymDemo/PaymentController</param-value>
+    </context-param>
     <session-config>
         <session-timeout>
             30

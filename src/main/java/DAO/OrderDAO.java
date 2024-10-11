@@ -25,6 +25,7 @@ public class OrderDAO {
     DBContext dbContext = new DBContext();
     Connection connection;
     String sql = "";
+    
 
     public int AddOrder(Order order) {
         connection = dbContext.getConnection();
@@ -90,5 +91,33 @@ public class OrderDAO {
             dbContext.closeConnection(); // Đóng kết nối sau khi sử dụng
         }
         return orders;
+    }
+    
+     public Order GetOrderById(int id) {
+        connection = dbContext.getConnection();
+        sql = "Select * from Orders where Id =?";
+        Order order = new Order();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            // Hiển thị kết quả
+            while (resultSet.next()) {
+                order.setId(resultSet.getInt(1));
+                order.setOrderDate(resultSet.getDate(2));
+                order.setShipperDate(resultSet.getDate(3));
+                order.setDiscount(resultSet.getFloat(5));
+
+                order.setFrieght(resultSet.getString(6));
+                order.setStatus(resultSet.getString(7));
+                order.setTotalPrice(resultSet.getDouble(4));
+
+            }
+        } catch (SQLException e) {
+            System.out.println("Lỗi thực thi câu truy vấn: " + e.getMessage());
+        } finally {
+            dbContext.closeConnection(); // Đóng kết nối sau khi sử dụng
+        }
+        return order;
     }
 }

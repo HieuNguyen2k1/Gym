@@ -71,63 +71,78 @@
                         %>
 
                         <div class="Cart">
-                            <form>
-                                <% for (Order order : orders) { %>
+                            <form method="post" action="PaymentController">
+                                <% for (Order order : orders) {
+                                %>
                                 <div class="single-cat text-center mb-30 wow fadeInUp " data-wow-duration="1s" data-wow-delay=".6s">
                                     <div class="row">
-                                        <div class="cat-icon imgProduct col-sm-4">
+                                        <!--=========================================-->
+                                        <div class="col-sm-1" >  
+                                            <input style="transform: scale(2); "  name="SelectOrder" type="checkBox" value="<%=order.getId()%>" onchange="updateTotalPrice()">
+                                        </div>
+                                        <!--=========================================-->
+                                        <div class="cat-icon imgProduct col-sm-2">
                                             <img src="assets/img/shop/2.png" alt="">
                                         </div>
                                         <% for (OrderDetail orderDetail : orderDetails) {
 
                                                 if (order.getId() == orderDetail.getOrderId()) {
                                         %>
-                                        <div class="productDetail cat-cap col-sm-4">
-                                            <% for (Product product : products) {
+                                        <% for (Product product : products) {
 
-                                                    if (orderDetail.getProId() == product.getId()) {
-                                            %>
+                                                if (orderDetail.getProId() == product.getId()) {
+                                        %>
+                                        <div class="productDetail cat-cap col-sm-5">
+
                                             <h5><a href="services.jsp"><%=product.getProName()%></a></h5>
 
+
+
+                                        </div>
+                                        <%
+                                            double price = product.getPrice() * 1000;
+                                            DecimalFormat df = new DecimalFormat("#,###");
+                                            String formattedPrice = df.format(price);
+                                            formattedPrice = formattedPrice.replace(",", " ");
+                                        %>
+                                        <div class="col-sm-1" >
+                                            <h5><a href="#" style="color: white; font-size: 30px;"><%=formattedPrice%></a></h5>
+                                        </div>
+                                        <%}
+                                            }%>
+                                        <!--=========================================-->
+
+                                        <div class="col-sm-1" >
+                                            <p style="color: white !important; font-size: 30px;"><%=orderDetail.getQuantity()%></p>
+                                        </div>
+                                        <!--=========================================-->
+                                        <div class="col-sm-2">
+                                            <p style="color: white !important; font-size: 30px;">nhập mã discount discount nếu có</p>
+
                                             <%
-                                                double price = product.getPrice() * 1000;
+                                                double price = order.getTotalPrice() * 1000;
                                                 DecimalFormat df = new DecimalFormat("#,###");
                                                 String formattedPrice = df.format(price);
                                                 formattedPrice = formattedPrice.replace(",", " ");
                                             %>
 
-                                            <h5><a href="services.jsp"><%=formattedPrice%></a></h5>
-                                                <%}
-                                                    }%>
-                                        </div>
-                                        <div class="col-sm-4" >
-                                            <p style="color: white !important; font-size: 30px;"><%=orderDetail.getQuantity()%></p>
+                                            <p style="color: white !important; font-size: 30px;"><%=formattedPrice%></p>
                                         </div>
                                         <%}
                                             }%>
                                     </div>
-                                    <div class="" >
-                                        <p style="color: white !important; font-size: 30px;">nhập mã discount discount nếu có</p>
 
-                                        <%
-                                            double price = order.getTotalPrice() * 1000;
-                                            DecimalFormat df = new DecimalFormat("#,###");
-                                            String formattedPrice = df.format(price);
-                                            formattedPrice = formattedPrice.replace(",", " ");
-                                        %>
-
-                                        <p style="color: white !important; font-size: 30px;"><%=formattedPrice%></p>
-                                    </div>
 
                                 </div>
                                 <%} %>
-                                <div class="btnAdd ">
-                                    <a class="btn" href="#">Thanh toán</a>
-                                </div>
-                                <%}%>
 
+                                <div class="btnAdd " style="text-align: center;">
+<!--                                    <input id="totalAmount" style="color: white; font-size: 30px; background-color: transparent; border: 0;" value="Total: 0 đ" readonly>-->
+                                    <button class="btn"type="submit" >Thanh toán</button>
+                                </div>
                             </form>
                         </div>
+                        <%}%>
                     </div>
                 </div>
             </section>
@@ -179,5 +194,26 @@
         <!-- Jquery Plugins, main Jquery -->	
         <script src="./assets/js/plugins.js"></script>
         <script src="./assets/js/main.js"></script>
+
+        <script>
+                                                function updateTotalPrice() {
+                                                    const checkboxes = document.querySelectorAll('input[name="SelectOrder"]:checked');
+                                                    let total = 0;
+
+                                                    checkboxes.forEach(checkbox => {
+                                                        const orderId = checkbox.value;
+
+                                                        // Lấy giá trị tổng từ các đơn hàng dựa trên orderId
+                                                        // Bạn cần đảm bảo rằng bạn có thể lấy giá trị này từ đâu đó, ví dụ:
+            <% for (Order order : orders) {%>
+                                                        if (orderId == '<%= order.getId()%>') {
+                                                            total += <%= order.getTotalPrice() * 1000%>; // Giả sử bạn muốn tính giá trị nhân với 1000
+                                                        }
+            <% }%>
+                                                    });
+                                                    // Cập nhật tổng giá trị vào phần tử HTML
+                                                    document.getElementById('totalAmount').value = 'Total : ' +total + ' đ';
+                                                }
+        </script>
     </body>
 </html>

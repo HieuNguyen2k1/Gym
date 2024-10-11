@@ -4,7 +4,10 @@
  */
 package Model;
 
-import java.time.LocalDate;
+import java.util.Date;
+
+
+
 
 /**
  *
@@ -14,10 +17,9 @@ public class Payment {
 
     private int id;
     private double totalPrice;
-    private LocalDate time;
+    private Date time;
 
     private String status;
-    private int userId;
     private int orderId;
 
     public Payment() {
@@ -39,11 +41,18 @@ public class Payment {
         this.totalPrice = totalPrice;
     }
 
-    public LocalDate getTime() {
+    public Payment(double totalPrice, Date time, String status, int orderId) {
+        this.totalPrice = totalPrice;
+        this.time = time;
+        this.status = status;
+        this.orderId = orderId;
+    }
+
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(LocalDate time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 
@@ -55,14 +64,7 @@ public class Payment {
         this.status = status;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
+    
     public int getOrderId() {
         return orderId;
     }
