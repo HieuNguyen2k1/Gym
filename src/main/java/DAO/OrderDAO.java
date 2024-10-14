@@ -120,4 +120,55 @@ public class OrderDAO {
         }
         return order;
     }
+     
+     
+     public void UpdateOrder(int id) {
+        connection = dbContext.getConnection();
+        sql = "Update  Orders SET Status = ? where Id = ?";
+        
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1,"done"); 
+            preparedStatement.setInt(2, id); 
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Lỗi thực thi câu truy vấn: " + e.getMessage());
+        } finally {
+            dbContext.closeConnection(); // Đóng kết nối sau khi sử dụng
+        }
+        
+    }
+     
+    public List<Order> GetListOrderUnpaid(int id) {
+        connection = dbContext.getConnection();
+        sql = "Select * from Orders where UserId =? and Status != ? ";
+        List<Order> orders = new ArrayList<>();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, id);
+            preparedStatement.setString(2, "done");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            // Hiển thị kết quả
+            while (resultSet.next()) {
+                Order order = new Order();
+                // Giả sử bảng Users có các cột id và name
+                order.setId(resultSet.getInt(1));
+                order.setOrderDate(resultSet.getDate(2));
+                order.setShipperDate(resultSet.getDate(3));
+                order.setDiscount(resultSet.getFloat(5));
+
+                order.setFrieght(resultSet.getString(6));
+                order.setStatus(resultSet.getString(7));
+                order.setTotalPrice(resultSet.getDouble(4));
+
+                orders.add(order);
+            }
+        } catch (SQLException e) {
+            System.out.println("Lỗi thực thi câu truy vấn: " + e.getMessage());
+        } finally {
+            dbContext.closeConnection(); // Đóng kết nối sau khi sử dụng
+        }
+        return orders;
+    } 
+     
+     
 }

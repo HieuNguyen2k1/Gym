@@ -72,7 +72,7 @@ public class CartController extends HttpServlet {
         OrderDAO orderDao = new OrderDAO();
         OrderDetailDAO orderDetailDao = new OrderDetailDAO();
 
-        List<Order> orders = orderDao.GetListOrder(idUser);
+        List<Order> orders = orderDao.GetListOrderUnpaid(idUser);
         List<OrderDetail> orderDetails = new ArrayList<>();
         List<Product> products = new ArrayList<>();
 

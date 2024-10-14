@@ -215,7 +215,7 @@ h6 {
     margin-top: 0px;
     font-style: normal;
     font-weight: 500;
-    text-transform: normal;
+/*    text-transform: normal;*/
 }
 /*======================================*/
 .mess{
@@ -358,7 +358,7 @@ h6 {
     height: 100%;
 }
 .Cart div div .imgProduct{
-    transform: transparent;
+   
     width: 20%;
     height: 20%;
 }

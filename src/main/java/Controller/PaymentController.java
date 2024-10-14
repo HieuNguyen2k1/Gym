@@ -105,14 +105,16 @@ public class PaymentController extends HttpServlet {
         for (String str : stringNumbers) {
             idOrders.add(Integer.parseInt(str));
         }
-        if ( !idOrders.isEmpty()) {
+        if (!idOrders.isEmpty()) {
             for (Integer id : idOrders) {
                 Order order = orderDao.GetOrderById(id);
                 Payment payment = new Payment(order.getTotalPrice(), date, "Done", id);
                 paymentDao.AddPayment(payment);
+                orderDao.UpdateOrder(id);
             }
         }
-        response.sendRedirect("index.jsp");
+
+        response.sendRedirect("index.jsp?success=success");
 
     }
 
@@ -141,7 +143,7 @@ public class PaymentController extends HttpServlet {
             OrderDetailDAO orderDetailDao = new OrderDetailDAO();
 
             for (String orderId : selectedOrders) {
-                listId = orderId + ",";
+                listId += orderId + ",";
                 int id = Integer.parseInt(orderId);
                 Order order = orderDao.GetOrderById(id);
                 if (order != null) {

@@ -2,6 +2,20 @@
 
 <header>
     <style>
+        #success ,#error{
+           display: none;
+            position: fixed;
+            top: 60px;
+            right: -300px;
+            transition: right 0.5s ease;
+            z-index: 1000;
+            width: 10%;
+            font-size: 25px;
+            text-align: center;
+        }
+        .show {
+            right: 5px !important;
+        }
         .tab-container {
             background: #950101;
             border-radius: 5px;
@@ -273,6 +287,13 @@
             </div>
         </div>
     </div>
+
+    <div id="success" class="alert alert-success notification" role="alert">
+        Successful! 
+    </div>
+    <div id="error" class="alert alert-danger notification" role="alert">
+        Error! 
+    </div>
     <!-- Header End -->
     <!------------------- Modal Box Mess ----------------------->
     <div class="tab-container">
@@ -434,6 +455,33 @@
         callModal.style.display = "none"; // ?n modal
         videoCall.srcObject.getTracks().forEach((track) => track.stop()); // D?ng video
     });
+
+
+    <%
+        String successMessage = request.getParameter("success");
+        if (successMessage != null) {
+
+    %>
+
+    var notification = document.getElementById('success');
+    notification.style.display = "block";
+
+    setTimeout(function () {
+        notification.classList.add('show');
+    }, 1);
+    setTimeout(function () {
+        notification.classList.remove('show');
+
+
+        setTimeout(function () {
+            notification.style.right = '-1000px';
+        }, 10);
+        setTimeout(function () {
+            notification.style.display = "none";
+        }, 500);
+    }, 3000);
+    <%}%>
+
 </script>
 
 <!--
